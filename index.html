@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR Wedding</title>
+     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image:url('background.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            
+        }
+        .katayam{
+           margin-left: 400px;
+           margin-top: -170px;
+           
+        }
+        .kimage{
+            display: block;
+            width: 50%;
+        }
+        @media (max-width: 768px) {
+            .katayam{
+                margin-left: 15%;
+                margin-top: -30px;
+            }
+            .kimage{
+                width: 80%;
+            }
+            .wetext{
+                margin-left: 100px;
+            }
+        }
+
+        .wetext{
+            letter-spacing: 2px;
+            font-family: "Anton", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            margin-left: 20%;
+            color: #d4af37;
+        }
+       
+
+        .divider{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            margin: 15px auto;
+        }
+
+        diamond{
+            width: 6px;
+            height: 6px;
+            background: #d4af37;
+            transform: rotate(45deg);
+            margin: 0 10px;
+        }
+
+        .divider::before,.divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #d4af37;
+        }
+
+        .yuvala{
+            text-align: center;
+            color: #d4af37;
+        }
+        .date{
+            text-align: center;
+            color: #d4af37;
+        }
+        .invite{
+            background: transparent;
+            border: 2.5px solid transparent;
+
+            background-image: linear-gradient(90deg, #e9c655, #d4af37, #c9a01b);
+
+            color: wheat;
+            font-family: "Anton" , sans-serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            padding: 14px 35px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            margin-left: 20%;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .invite:hover{
+            background: #d4af37;
+            color: #fff;
+        }
+        .open{
+            text-decoration: none;
+            color: #d4af37;
+        }
+        .open:hover{
+            color: wheat;
+        }
+
+        .natum{
+            display: block;
+            max-width: 100%;
+            height: auto;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        /* Video Overlay & Fullscreen Styles */
+       /* Video eka pennana pradhana background eka */
+.video-overlay {
+    display: none; /* Mulinma hide karala thiyenne */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999; /* Page eke anith hamadetama wada udin pennanna */
+}
+
+/* Video eka phone screen ekata fit wena vidihata hadala */
+#transitionVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Skip Button eke design eka */
+.skip-button {
+    position: absolute;
+    bottom: 30px; /* Yatin thiyena dura */
+    right: 20px;  /* Dakunu paththen thiyena dura */
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000; /* Video ekata udin button eka pennanna */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+}
+
+.skip-button:active {
+    background-color: #fff;
+    transform: scale(0.98);
+}
+
+/* Mobile screens waladi button eka adjust wena vidihata */
+@media (max-width: 768px) {
+    .skip-button {
+        bottom: 20px;
+        right: 15px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+
+        /*loading animation*/
+        /* Preloader එක මුළු තිරයම වහගෙන තියෙන්න හදනවා */
+#wedding-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* සුදු පාට පසුබිම */
+    z-index: 99999; /* අනිත් හැමදේටම වඩා උඩින් තියෙන්න */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out; /* අයින් වෙද්දී ලස්සනට fade වෙලා යන්න */
+}
+
+.loader-content {
+    text-align: center;
+}
+
+/* ගැහෙන හදවතේ ඩිසයින් එක */
+.heart-loader {
+    background-color: #d4af37; /* Gold පාට (ඔයාට ඕනනම් #ff4d4d වගේ රතු පාටක් දෙන්න පුළුවන්) */
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto 20px;
+    transform: rotate(45deg);
+    animation: heartPulse 1.2s infinite; /* ඇනිමේෂන් එක */
+}
+
+.heart-loader::before,
+.heart-loader::after {
+    content: "";
+    background-color: #d4af37; /* උඩ දුන්න පාටම දෙන්න */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart-loader::before {
+    top: -20px;
+    left: 0;
+}
+
+.heart-loader::after {
+    top: 0;
+    left: -20px;
+}
+
+/* Loading අකුරු වල ඩිසයින් එක */
+.loader-content p {
+    color: #d4af37;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    animation: textFade 1.5s infinite;
+}
+
+/* හදවත ගැහෙන Animation එක */
+@keyframes heartPulse {
+    0% { transform: rotate(45deg) scale(0.8); }
+    5% { transform: rotate(45deg) scale(0.9); }
+    10% { transform: rotate(45deg) scale(0.8); }
+    15% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(0.8); }
+    100% { transform: rotate(45deg) scale(0.8); }
+}
+
+/* අකුරු නිවී නිවී පත්තුවෙන Animation එක */
+@keyframes textFade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+    </style>
+</head>
+<body>
+
+     <!-- Wedding Preloader -->
+<div id="wedding-preloader">
+    <div class="loader-content">
+        <div class="heart-loader"></div>
+        <p>Loading...</p>
+    </div>
+</div>
+
+    <div id="hearts-container"></div>
+    
+    <div class="katayam">
+        <img src="katayam.png" alt="katayam" class="kimage">
+        <p class="wetext">THE WEDDING OF</p>
+    </div> <br>
+
+    <div class="divider">
+        <span class="diamond"></span>
+    </div> <br>
+    <h1 class="yuvala">Bhanuka & Aruni</h1> <br>
+    <p class="date">Friday, 30<span style="vertical-align: super;">th</span> October 2026</p> <br>
+    <p style="color: #d4af37;" class="date">Time : 8.30 AM To 4.00 PM</p>
+    <br> <br>
+    
+    <!-- Button එක click කළාම Video එක Play වීමට හදා ඇත -->
+    <!-- වෙනස් කරන ලදි: අනවශ්‍ය <a> tag එක සහ වැරදි onclick එක ඉවත් කරන ලදි -->
+    <button class="invite" id="startTransitionBtn">OPEN INVITATION</button> <br>
+    
+    <div class="natum">
+        <img src="natum.png" alt="preaheta" style="width: 100%;">
+    </div>
+
+    <!-- Video Overlay Area -->
+    <!-- Page eke thiyena pradhana dewal saha video eka play karanna thiyena button eka -->
+<div class="content">
+    
+</div>
+
+<!-- Video Overlay eka (Meka mulin penne na, button eka ebuvama mathu venava) -->
+<div id="videoOverlay" class="video-overlay">
+    <!-- playsinline kiyana eka mobile wala full screen open wenne nathuwa meke athulema play wenna godak vadhagath -->
+    <video id="transitionVideo" playsinline>
+        <source src="anime.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Video eka skip karanna thiyena button eka -->
+    <!-- වෙනස් කරන ලදි: type="button" එකතු කරන ලදි -->
+    <button id="skipBtn" class="skip-button" type="button">View Invitation</button>
+</div>
+
+    <script>
+    const startBtn = document.getElementById('startTransitionBtn');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const video = document.getElementById('transitionVideo');
+    const skipBtn = document.getElementById('skipBtn');
+
+    // 2 vana page eke link eka mekata danna
+    const nextPageURL = "2.html"; 
+
+    // Function එක: Permission Flag එක සෙට් කරලා Page 2 එකට යනවා
+    function goToNextPage() {
+        sessionStorage.setItem('allowAccess', 'true');
+        window.location.href = nextPageURL;
+    }
+
+    // 1. Next button eka click karama video eka mathu wela play venava
+    startBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // page එක reload වෙන එක නවත්තන්න
+        videoOverlay.style.display = 'block';
+        video.play();
+    });
+
+    // 2. Video eka play wela iwara unama auto anith page ekata yanava (Flag එකත් එක්ක)
+    video.addEventListener('ended', () => {
+        goToNextPage();
+    });
+
+    // 3. View Invitation (Skip) button eka click karoth kelinma anith page ekata yanava (Flag එකත් එක්ක)
+    skipBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToNextPage();
+    });
+
+    // URL එකෙන් නම ගන්නවා
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('name'); 
+    const inviteType = urlParams.get('type');
+
+    // නම සහ ආසන ගාන තාවකාලිකව Memory එකේ සේව් කිරීම
+    if (guestName) {
+        sessionStorage.setItem('weddingGuestName', guestName);
+    }
+    if (inviteType) {
+        sessionStorage.setItem('weddingInviteType', inviteType);
+    }
+
+    //loading animation
+    // පේජ් එක සම්පූර්ණයෙන්ම ලෝඩ් වුණාට පස්සේ මේක රන් වෙනවා
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('wedding-preloader');
+        
+        if (preloader) {
+            // Preloader එක ලස්සනට fade වෙලා යන්න opacity 0 කරනවා
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            
+            // Fade වෙන වෙලාව (තත්පර 0.6) ගියාට පස්සේ ඒක සම්පූර්ණයෙන්ම අයින් කරලා දානවා
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }
+    });
+    </script>
+</body>
+</html>
