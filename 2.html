@@ -1115,44 +1115,7 @@ body {
 
 
 
-        /*gallery 2*/
-       /* Popup Modal Background */
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
-}
-
-/* Popup Inside Image */
-.popup-content {
-    max-width: 85%;
-    max-height: 85%;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Close (X) Button */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #ffffff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-btn:hover {
-    color: #bbb;
-}
-
+     
 
     </style>
 </head>
@@ -1285,39 +1248,32 @@ body {
   
   <div class="gallery-grid">
     <div class="grid-item item-1">
-      <img src="1.png" alt="Gallery Image 1" onclick="openPopup(this.src)">
+      <img src="1.png" alt="Gallery Image 1">
     </div>
     
     <div class="grid-item item-2">
-      <img src="2.png" alt="Gallery Image 2" onclick="openPopup(this.src)">
+      <img src="2.png" alt="Gallery Image 2" >
     </div>
     
     <div class="grid-item item-3">
-      <img src="3.png" alt="Gallery Image 3" onclick="openPopup(this.src)">
+      <img src="3.png" alt="Gallery Image 3">
     </div>
     
     <div class="grid-item item-4">
-      <img src="4.png" alt="Gallery Image 4" onclick="openPopup(this.src)">
+      <img src="4.png" alt="Gallery Image 4" >
     </div>
     
     <div class="grid-item item-5">
-      <img src="5.jpg" alt="Gallery Image 5" onclick="openPopup(this.src)">
+      <img src="5.jpg" alt="Gallery Image 5" >
     </div>
     
     <div class="grid-item item-6">
-      <img src="6.jpg" alt="Gallery Image 6" onclick="openPopup(this.src)">
+      <img src="6.png" alt="Gallery Image 6" >
     </div>
   </div>
 </section>
 
-<!-- Popup Modal එක සහ Close Button එක -->
-<div id="imagePopup" class="popup">
-    <!-- Close (X) Button එක -->
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    
-    <!-- Popup වෙන Image එක -->
-    <img id="popupImg" class="popup-content">
-</div>
+
 
 
 
@@ -1754,30 +1710,7 @@ function toggleMusic() {
 }
 
 
-//gallery popup
-function openPopup(imageSrc) {
-    document.getElementById("popupImg").src = imageSrc;
-    document.getElementById("imagePopup").style.display = "flex";
-}
 
-function closePopup() {
-    document.getElementById("imagePopup").style.display = "none";
-}
-
-// Image එකෙන් පිටත (Background එක) Click කළාම Close වෙන්න
-window.onclick = function(event) {
-    var popup = document.getElementById("imagePopup");
-    if (event.target == popup) {
-        closePopup();
-    }
-}
-
-// Keyboard එකේ ESC key එක එබුවාම Close වෙන්න
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closePopup();
-    }
-});
 
     </script>
 </body>
