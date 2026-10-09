@@ -1113,7 +1113,32 @@ body {
             }
         }
 
+/*poto gallary*/
+/* Photo screen-ge thakkante auto-resize agalu */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 8px;
+}
 
+/* Mobile screen-galalli container sarhiyagiralu */
+.card-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Mobile-gagi extra alignment adjust madalu */
+@media (max-width: 600px) {
+    .card-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
 
      
 
@@ -1242,7 +1267,7 @@ body {
 
     </div>
    
-
+    <!--
     <section class="gallery-section">
   <h2 class="gallery-title" style="color: #682860;">Gallery</h2>
   
@@ -1273,7 +1298,9 @@ body {
   </div>
 </section>
 
+-->
 
+<img src="g1.jpg" alt="Wedding Photo" class="responsive-img">
 
 
 
